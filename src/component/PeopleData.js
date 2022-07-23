@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PeopleDetails from './PeopleDetails';
+
 
 const PeopleData = ({ people }) => {
     const { name, height, skin_color, mass, eye_color, birth_year, hair_color, gender } = people;
