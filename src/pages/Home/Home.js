@@ -1,30 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
+import Loading from '../../component/Loading';
 import PeopleData from '../../component/PeopleData';
 
 const Home = () => {
     const [peoples, setPeoples] = useState([]);
-
+    const baseURL = process.env.REACT_APP_SERVER_URL
     useEffect(() => {
         const fetchPeoples = async () => {
-            const res = await fetch(`https://swapi.dev/api/people/?page=1`)
+            const res = await fetch(`${baseURL}/?page=1`)
             const data = await res.json();
             setPeoples(data)
         };
         fetchPeoples();
     }, []);
     const fetchPeoples = async (currentPage) => {
-        const res = await fetch(`https://swapi.dev/api/people/?page=${currentPage}`)
+        const res = await fetch(`${baseURL}/?page=${currentPage}`)
         const data = await res.json();
         return data;
     };
-
     const handlePageClick = async (data) => {
         console.log(data.selected);
         let currentPage = data.selected + 1;
         const peoplesServer = await fetchPeoples(currentPage);
         setPeoples(peoplesServer);
     };
+    if (!peoples?.results) {
+        return <Loading></Loading>
+    }
     return (
         <div>
             {peoples?.results?.map(people => <PeopleData

@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
 const PeopleDetails = () => {
-    const [details, setDetails] = useState([]);
-    // useEffect(() => {
-    //     fetch(``)
-    // }, [])
+
+
     return (
         <div class="card bg-base-300 shadow-xl mx-18 my-10">
             <div class="card-body">
