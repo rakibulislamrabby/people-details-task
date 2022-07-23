@@ -4,7 +4,7 @@ import PeopleData from '../../component/PeopleData';
 
 const Home = () => {
     const [peoples, setPeoples] = useState([]);
-    const [pageCount, setpageCount] = useState(0);
+
     useEffect(() => {
         const fetchPeoples = async () => {
             const res = await fetch(`https://swapi.dev/api/people/?page=1`)
